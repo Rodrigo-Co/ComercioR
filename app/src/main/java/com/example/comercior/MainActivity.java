@@ -50,5 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public void telaCadastro(View view){
         Intent in = new Intent(MainActivity.this, TelaCadastro.class);
         startActivity(in);
+        finish();
     }
 }
