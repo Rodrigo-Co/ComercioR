@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Seja Bem Vindo!", Toast.LENGTH_SHORT).show(); // Corrigido
             Intent in = new Intent(MainActivity.this, TelaProdutos.class);
             startActivity(in);
+            finish();
         }else{
             Toast.makeText(MainActivity.this, "Dados incorretos\nCadastre-se ou Recupere a Senha", Toast.LENGTH_SHORT).show(); // Corrigido
         }
@@ -45,5 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(MainActivity.this, "Email não cadastrado", Toast.LENGTH_SHORT).show(); // Corrigido
         }
+    }
+    public void telaCadastro(View view){
+        Intent in = new Intent(MainActivity.this, TelaCadastro.class);
+        startActivity(in);
     }
 }
