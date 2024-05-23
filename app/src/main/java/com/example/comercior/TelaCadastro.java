@@ -29,6 +29,7 @@ public class TelaCadastro extends AppCompatActivity {
         if(Nome.isEmpty() || Email.isEmpty() || Telefone.isEmpty() || Senhacadastro.isEmpty()){
             Toast.makeText(getApplicationContext(), "Dados incompletos!", Toast.LENGTH_SHORT).show();
         }else{
+
             Intent in = new Intent(TelaCadastro.this, MainActivity.class);
             in.putExtra("Email", Email);
             in.putExtra("Senhacadastro", Senhacadastro);
