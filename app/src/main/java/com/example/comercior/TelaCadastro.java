@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class TelaCadastro extends AppCompatActivity {
+    Usuario usuario; // Objeto Usuario que armazena as informações do usuário
+    FirebaseAuth autenticacao; // Objeto FirebaseAuth para autenticação com Firebase
     EditText nome, email, telefone, senhacadastro;
 
     @Override
@@ -20,22 +24,36 @@ public class TelaCadastro extends AppCompatActivity {
         telefone = (EditText) findViewById(R.id.telefone);
         senhacadastro = (EditText) findViewById(R.id.senhacadastro);
     }
-    public void cadastro(View view){
+    public void cadastro(View view) {
         String Nome = nome.getText().toString();
         String Email = email.getText().toString();
         String Telefone = telefone.getText().toString();
         String Senhacadastro = senhacadastro.getText().toString();
 
-        if(Nome.isEmpty() || Email.isEmpty() || Telefone.isEmpty() || Senhacadastro.isEmpty()){
+        if (Nome.isEmpty() || Email.isEmpty() || Telefone.isEmpty() || Senhacadastro.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Dados incompletos!", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
+            usuario = new Usuario(); // Cria um novo objeto Usuario
+            usuario.setNome(Nome); // Define o nome do usuário
+            usuario.setEmail(Email); // Define o email do usuário
+            usuario.setTel(Telefone); // Define o telefone do usuario
+            usuario.setPass(Senhacadastro); // Define a senha do usuário
 
-            Intent in = new Intent(TelaCadastro.this, MainActivity.class);
-            in.putExtra("Email", Email);
-            in.putExtra("Senhacadastro", Senhacadastro);
-            Toast.makeText(getApplicationContext(), "Dados Cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
-            startActivity(in);
+            autenticacao = ConfiguraBd.Fireautenticacao(); // Obtém instância de autenticação do Firebase
+
+            autenticacao.createUserWithEmailAndPassword(
+                    usuario.getEmail(), usuario.getPass()
+            ).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Intent in = new Intent(TelaCadastro.this, MainActivity.class);
+                    in.putExtra("Email", Email);
+                    in.putExtra("Senhacadastro", Senhacadastro);
+                    Toast.makeText(getApplicationContext(), "Dados Cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
+                    startActivity(in);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Erro ao cadastrar. Tente novamente.", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
-
 }
