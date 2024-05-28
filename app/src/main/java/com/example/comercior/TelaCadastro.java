@@ -14,7 +14,7 @@ public class TelaCadastro extends AppCompatActivity {
     Usuario usuario; // Objeto Usuario que armazena as informações do usuário
     FirebaseAuth autenticacao; // Objeto FirebaseAuth para autenticação com Firebase
     EditText nome, email, telefone, senhacadastro;
-
+        
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
