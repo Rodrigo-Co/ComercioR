@@ -34,9 +34,9 @@ public class TelaCadastro extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Dados incompletos!", Toast.LENGTH_SHORT).show();
         } else {
             usuario = new Usuario(); // Cria um novo objeto Usuario
-            usuario.setNome(Nome); // Define o nome do usuário
+            //usuario.setNome(Nome); // Define o nome do usuário
             usuario.setEmail(Email); // Define o email do usuário
-            usuario.setTel(Telefone); // Define o telefone do usuario
+            //usuario.setTel(Telefone); // Define o telefone do usuario
             usuario.setPass(Senhacadastro); // Define a senha do usuário
 
             autenticacao = ConfiguraBd.Fireautenticacao(); // Obtém instância de autenticação do Firebase
@@ -46,10 +46,9 @@ public class TelaCadastro extends AppCompatActivity {
             ).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Intent in = new Intent(TelaCadastro.this, MainActivity.class);
-                    in.putExtra("Email", Email);
-                    in.putExtra("Senhacadastro", Senhacadastro);
                     Toast.makeText(getApplicationContext(), "Dados Cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
                     startActivity(in);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Erro ao cadastrar. Tente novamente.", Toast.LENGTH_SHORT).show();
                 }
