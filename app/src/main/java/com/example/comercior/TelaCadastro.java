@@ -50,7 +50,7 @@ public class TelaCadastro extends AppCompatActivity {
                     startActivity(in);
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Erro ao cadastrar. Tente novamente.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Erro ao cadastrar. Verifique o email ou telefone.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
