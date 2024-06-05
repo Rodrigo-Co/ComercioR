@@ -1,12 +1,12 @@
 package com.example.comercior;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     public void recuperarsenha(View view){
         Intent in = new Intent(MainActivity.this, TelaRecSenha.class);
         startActivity(in);
-        finish();
     }
     public void telaCadastro(View view){
         Intent in = new Intent(MainActivity.this, TelaCadastro.class);
