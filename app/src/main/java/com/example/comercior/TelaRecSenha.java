@@ -44,4 +44,9 @@ public class TelaRecSenha extends AppCompatActivity {
             });
         }
     }
+    public void login(View view){
+        Intent in = new Intent(TelaRecSenha.this,MainActivity.class);
+        startActivity(in);
+        finish();
+    }
 }

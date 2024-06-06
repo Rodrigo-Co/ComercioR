@@ -55,4 +55,9 @@ public class TelaCadastro extends AppCompatActivity {
             });
         }
     }
+    public void login(View view){
+        Intent in = new Intent(TelaCadastro.this, MainActivity.class);
+        startActivity(in);
+        finish();
+    }
 }
