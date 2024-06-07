@@ -1,8 +1,11 @@
 package com.example.comercior;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -15,6 +18,7 @@ public class TelaProdutos extends AppCompatActivity {
 
     ListView listaprodutos;
     EditText etSearch;
+    List<Produto> carrinho = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,8 @@ public class TelaProdutos extends AppCompatActivity {
         produtos.add(new Produto("COMBO: WHEY CONCENTRADO (1KG) + COQUETELEIRA (300mL) + CREATINA MONOHIDRATADA (100G)", R.drawable.iconecombo,"COQUETELEIRA também conhecida como shakeira, é um recipiente prático para misturar seu WHEY PROTEIN CONCENTRADO e sua CREATINA MONOHIDRATADA sem desperdício."));
         produtos.add(new Produto("MULTIVITAMINICOS (120CAPS)", R.drawable.iconemultv,"MULTIVITAMINICO é um suplemento alimentar composto por diversas vitaminas e minerais, que podem fornecer a nutrição diária exigida pelo corpo humano."));
 
-        AdaptadorImg adapter = new AdaptadorImg(this, produtos);
+        int iconeaddcart = R.drawable.iconeaddcart;
+        AdaptadorImg adapter = new AdaptadorImg(this, produtos, iconeaddcart, carrinho);
         listaprodutos.setAdapter(adapter);
 
         etSearch.addTextChangedListener(new TextWatcher() {
@@ -48,5 +53,11 @@ public class TelaProdutos extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+    }
+    public void TelaCarrinho(View view){
+        Intent in = new Intent(TelaProdutos.this, TelaCarrinho.class);
+        in.putParcelableArrayListExtra("carrinho", new ArrayList<>(carrinho));
+        startActivity(in);
+
     }
 }

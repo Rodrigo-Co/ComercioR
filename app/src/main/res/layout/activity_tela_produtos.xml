@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/telaprodutos"
     android:orientation="vertical"
-    tools:context=".TelaProdutos"
+    android:padding="16dp"
     android:windowSoftInputMode="adjustPan"
-    android:padding="16dp">
+    tools:context=".TelaProdutos">
 
 
     <ListView
@@ -27,17 +27,25 @@
         android:id="@+id/etSearch"
         android:layout_width="265dp"
         android:layout_height="45dp"
-        android:dividerHeight="1dp"
         android:layout_marginTop="72dp"
         android:layout_marginBottom="64dp"
+        android:dividerHeight="1dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="Pesquise"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/listaprodutos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:onClick="TelaCarrinho"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="-14dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
