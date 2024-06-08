@@ -72,7 +72,7 @@ public class AdaptadorImg extends ArrayAdapter<Produto> implements Filterable {
         holder.iconView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carrinho.add(produto);
+                CarrinhoManager.getInstance().adicionarProduto(produto);
                 Toast.makeText(context, produto.getNome() + " adicionado ao carrinho", Toast.LENGTH_SHORT).show();
             }
         });

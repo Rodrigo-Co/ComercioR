@@ -27,25 +27,25 @@
         android:id="@+id/etSearch"
         android:layout_width="265dp"
         android:layout_height="45dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="76dp"
         android:dividerHeight="1dp"
         android:ems="10"
         android:hint="Pesquise"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/listaprodutos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="50dp"
-        android:layout_height="32dp"
+        android:layout_height="47dp"
         android:onClick="TelaCarrinho"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="-14dp" />
+        tools:layout_editor_absoluteY="-5dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

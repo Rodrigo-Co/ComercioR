@@ -11,6 +11,7 @@ public class Produto implements Parcelable {
     private String descricao;
     // Outros detalhes do produto (preço, descrição, etc.)
 
+
     public Produto(String nome, int iconeResource, String descricao) {
         this.nome = nome;
         this.iconeResource = iconeResource;
