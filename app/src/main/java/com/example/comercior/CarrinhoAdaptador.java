@@ -45,6 +45,7 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
             holder.quantidadeProdutoTextView = convertView.findViewById(R.id.product_quantity);
             holder.decrementButton = convertView.findViewById(R.id.decrement_button);
             holder.incrementButton = convertView.findViewById(R.id.increment_button);
+            //holder.quantidadeTotalTextView = convertView.findViewById(R.id.qtdcart);
             holder.detailsLayout = convertView.findViewById(R.id.details);
             convertView.setTag(holder);
         } else {
@@ -57,12 +58,17 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
         holder.descricaoProdutoTextView.setText(produto.getDescricao());
         holder.iconeProdutoImageView.setImageResource(produto.getIconeResource());
         holder.quantidadeProdutoTextView.setText("Quantidade: "+ carrinhoManager.getQuantidade(produto));
+        //holder.quantidadeTotalTextView.setText(""+ carrinhoManager.getQuantidadeTotal());
 
         holder.incrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 carrinhoManager.adicionarProduto(produto);
                 holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto));
+                notifyDataSetChanged();
+                if (context instanceof TelaCarrinho) {
+                    ((TelaCarrinho) context).updateQuantidadeTotal();
+                }
             }
         });
 
@@ -71,6 +77,10 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
             public void onClick(View v) {
                 carrinhoManager.removerProduto(produto);
                 holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto));
+                notifyDataSetChanged();
+                if (context instanceof TelaCarrinho) {
+                    ((TelaCarrinho) context).updateQuantidadeTotal();
+                }
             }
         });
 
@@ -95,6 +105,7 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
         TextView descricaoProdutoTextView;
         ImageView iconeProdutoImageView;
         TextView quantidadeProdutoTextView;
+        //TextView quantidadeTotalTextView;
         Button decrementButton;
         Button incrementButton;
         LinearLayout detailsLayout;

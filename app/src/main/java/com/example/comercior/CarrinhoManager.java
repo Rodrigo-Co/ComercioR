@@ -47,4 +47,11 @@ public class CarrinhoManager {
     public List<Produto> getCarrinho() {
         return new ArrayList<>(quantidadeMap.keySet());
     }
+    public int getQuantidadeTotal() {
+        int quantidadeTotal = 0;
+        for (int quantidade : quantidadeMap.values()) {
+            quantidadeTotal += quantidade;
+        }
+        return quantidadeTotal;
+    }
 }

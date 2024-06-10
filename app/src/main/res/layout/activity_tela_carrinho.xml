@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/telaprodutos"
+    android:background="@drawable/telacarrinho"
     android:orientation="vertical"
     android:padding="16dp"
     android:windowSoftInputMode="adjustPan"
@@ -12,34 +12,68 @@
 
     <ListView
         android:id="@+id/listaCarrinho"
-        android:layout_width="match_parent"
-        android:layout_height="475dp"
+        android:layout_width="378dp"
+        android:layout_height="464dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="82dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="46dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="-9.9dp"
         android:onClick="TelaProdutos"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="1.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="78dp"
-        android:layout_height="38dp"
+        android:layout_width="66dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="648dp"
         android:onClick="addCupom"
-        android:text="cupom"
-        tools:layout_editor_absoluteX="306dp"
-        tools:layout_editor_absoluteY="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="322dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="53dp"
+        android:onClick="TelaProdutos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/qtdcart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="106dp"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="122dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-12dp"
+        android:onClick="comprar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
