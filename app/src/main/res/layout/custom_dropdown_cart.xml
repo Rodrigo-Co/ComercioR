@@ -40,13 +40,15 @@
             android:id="@+id/decrement_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-" />
+            android:text="-"
+            android:backgroundTint="#B22222"/>
 
         <Button
             android:id="@+id/increment_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="+"
+            android:backgroundTint="#D2691E"/>
     </LinearLayout>
 
     <LinearLayout
