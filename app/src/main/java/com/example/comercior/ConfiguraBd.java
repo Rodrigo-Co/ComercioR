@@ -2,6 +2,7 @@ package com.example.comercior;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ConfiguraBd {
+        // Classe utilizada para configurar a conexão com o FireBase
         private static FirebaseAuth auth; // Declaração de uma variável estática do FirebaseAuth
 
         // Método estático que retorna uma instância do FirebaseAuth

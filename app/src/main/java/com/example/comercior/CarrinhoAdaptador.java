@@ -20,9 +20,9 @@ import java.util.Map;
 
 public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
 
-    private Context context;
-    private List<Produto> carrinho;
-    private CarrinhoManager carrinhoManager;
+    private Context context; // Contexto da aplicação
+    private List<Produto> carrinho; // Lista de produtos no carrinho
+    private CarrinhoManager carrinhoManager; // Gerenciador do carrinho
 
     public CarrinhoAdaptador(Context context, List<Produto> carrinho) {
         super(context, R.layout.custom_dropdown_cart, carrinho);
@@ -37,6 +37,7 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
         ViewHolder holder;
 
         if (convertView == null) {
+            // Verifica se a view está sendo reutilizada, caso contrário infla uma nova view
             convertView = LayoutInflater.from(context).inflate(R.layout.custom_dropdown_cart, parent, false);
             holder = new ViewHolder();
             holder.nomeProdutoTextView = convertView.findViewById(android.R.id.text1);
@@ -45,45 +46,47 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
             holder.quantidadeProdutoTextView = convertView.findViewById(R.id.product_quantity);
             holder.decrementButton = convertView.findViewById(R.id.decrement_button);
             holder.incrementButton = convertView.findViewById(R.id.increment_button);
-            //holder.quantidadeTotalTextView = convertView.findViewById(R.id.qtdcart);
             holder.detailsLayout = convertView.findViewById(R.id.details);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Produto produto = carrinho.get(position);
+        Produto produto = carrinho.get(position); // Obtém o produto da posição atual
 
+        // Define os valores dos componentes de interface com os dados do produto
         holder.nomeProdutoTextView.setText(produto.getNome());
         holder.descricaoProdutoTextView.setText(produto.getDescricao());
         holder.iconeProdutoImageView.setImageResource(produto.getIconeResource());
         holder.quantidadeProdutoTextView.setText("Quantidade: "+ carrinhoManager.getQuantidade(produto));
-        //holder.quantidadeTotalTextView.setText(""+ carrinhoManager.getQuantidadeTotal());
 
+        // Define o comportamento do botão de incrementar quantidade
         holder.incrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carrinhoManager.adicionarProduto(produto);
-                holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto));
-                notifyDataSetChanged();
+                carrinhoManager.adicionarProduto(produto); // Adiciona um produto ao carrinho
+                holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto)); // Atualiza a quantidade exibida
+                notifyDataSetChanged(); // Notifica o adaptador sobre a mudança de dados
                 if (context instanceof TelaCarrinho) {
-                    ((TelaCarrinho) context).updateQuantidadeTotal();
+                    ((TelaCarrinho) context).updateQuantidadeTotal(); // Atualiza a quantidade total no TextView correspondente
                 }
             }
         });
 
+        // Define o comportamento do botão de diminuir quantidade
         holder.decrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carrinhoManager.removerProduto(produto);
-                holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto));
-                notifyDataSetChanged();
+                carrinhoManager.removerProduto(produto); // Remove um produto do carrinho
+                holder.quantidadeProdutoTextView.setText("Quantidade: " + carrinhoManager.getQuantidade(produto)); // Atualiza a quantidade exibida
+                notifyDataSetChanged(); // Notifica o adaptador sobre a mudança de dados
                 if (context instanceof TelaCarrinho) {
-                    ((TelaCarrinho) context).updateQuantidadeTotal();
+                    ((TelaCarrinho) context).updateQuantidadeTotal(); // Atualiza a quantidade total no TextView correspondente
                 }
             }
         });
 
+        // Define o comportamento de exibir ou ocultar os detalhes do produto ao clicar na view
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,12 +103,12 @@ public class CarrinhoAdaptador extends ArrayAdapter<Produto> {
         return convertView;
     }
 
+    // Classe estática para armazenar as referências dos componentes de interface
     static class ViewHolder {
         TextView nomeProdutoTextView;
         TextView descricaoProdutoTextView;
         ImageView iconeProdutoImageView;
         TextView quantidadeProdutoTextView;
-        //TextView quantidadeTotalTextView;
         Button decrementButton;
         Button incrementButton;
         LinearLayout detailsLayout;

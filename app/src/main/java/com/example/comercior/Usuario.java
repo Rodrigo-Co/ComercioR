@@ -1,6 +1,7 @@
 package com.example.comercior;
 
 public class Usuario {
+    // Classe utilizada para armazenar as informações do usuario temporiariamente
     private String nome,email, tel, pass;
 
     public Usuario() {
